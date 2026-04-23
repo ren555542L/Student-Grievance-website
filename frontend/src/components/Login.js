@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 
-const REACT_APP_API_URL = "https://student-grievance-website.vercel.app/"
 
 const Login = ({ onSwitchToRegister }) => {
   const { login } = useAuth();
