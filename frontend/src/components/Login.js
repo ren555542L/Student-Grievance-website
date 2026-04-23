@@ -24,6 +24,7 @@ const Login = ({ onSwitchToRegister }) => {
     setLoading(true);
     try {
       const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/login`, form)
+      login(res.data.token); 
       toast.success(`👋 Welcome back, ${res.data.student.name}!`);
     } catch (err) {
       const msg = err.response?.data?.message || 'Login failed. Please try again.';
