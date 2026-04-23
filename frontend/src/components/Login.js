@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 
+const REACT_APP_API_URL = "https://student-grievance-website.vercel.app/"
+
 const Login = ({ onSwitchToRegister }) => {
   const { login } = useAuth();
   const [form, setForm] = useState({ email: '', password: '' });
@@ -22,8 +24,7 @@ const Login = ({ onSwitchToRegister }) => {
     }
     setLoading(true);
     try {
-      const res = await axios.post('/api/login', form);
-      login(res.data.token, res.data.student);
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/login`, form)
       toast.success(`👋 Welcome back, ${res.data.student.name}!`);
     } catch (err) {
       const msg = err.response?.data?.message || 'Login failed. Please try again.';
